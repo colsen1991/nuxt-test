@@ -5,8 +5,9 @@
   "author": "Christer Olsen <colsen1991@gmail.com> (https://www.christerolsen.no)",
   "private": true,
   "dependencies": {
-    "nuxt": "latest",
-    "@nuxtjs/pwa": "latest"
+    "@nuxtjs/pwa": "latest",
+    "node-fetch": "^1.7.2",
+    "nuxt": "latest"
   },
   "scripts": {
     "dev": "nuxt",

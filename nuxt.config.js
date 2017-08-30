@@ -1,3 +1,5 @@
+const fetch = require('node-fetch')
+
 module.exports = {
   /*
   ** Build configuration
@@ -11,7 +13,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#3B8070' },
+  loading: {color: '#3B8070'},
   /*
   ** Customize app manifest
   */
@@ -23,5 +25,21 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/pwa'
-  ]
+  ],
+  /*
+  ** Generate
+   */
+  generate: {
+    routes: async () => {
+      const res = await fetch('https://jsonplaceholder.typicode.com/posts')
+      const posts = await res.json()
+
+      return posts.map((post) => {
+        return {
+          route: `/post/${post.id}`,
+          payload: post
+        }
+      })
+    }
+  }
 }
